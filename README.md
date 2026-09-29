@@ -1,8 +1,6 @@
 <div align="center">
 
-# [NeurIPS 2026] FreqCa
-
-### Accelerating Image Generation and Editing via Frequency-Aware Caching
+# [NeurIPS 2026] FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching
 
 Jiacheng Liu<sup>1,2,3</sup>, Peiliang Cai<sup>1</sup>, Qinming Zhou<sup>1,4</sup>,
 Yuqi Lin<sup>1,5</sup>, Deyang Kong<sup>1,7</sup>, Benhao Huang<sup>1,6</sup>,
@@ -15,15 +13,15 @@ Junshu Tang<sup>2</sup>, Shikang Zheng<sup>1,8</sup>, Linfeng Zhang<sup>1</sup>
 
 <p>
   <img src="https://img.shields.io/badge/NeurIPS-2026-4b44ce" alt="NeurIPS 2026">
-  <img src="https://img.shields.io/badge/Paper-coming_soon-lightgrey" alt="Paper coming soon">
+  <a href="FreqCa.pdf"><img src="https://img.shields.io/badge/Paper-Latest_PDF-blue" alt="Latest paper PDF"></a>
+  <a href="https://arxiv.org/abs/2510.08669"><img src="https://img.shields.io/badge/Paper-arXiv-b31b1b" alt="arXiv paper"></a>
   <a href="https://github.com/Tammytcl/FreqCa"><img src="https://img.shields.io/badge/Code-GitHub-black?logo=github" alt="Code"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-green" alt="License"></a>
   <a href="https://github.com/Tammytcl/FreqCa/stargazers"><img src="https://img.shields.io/github/stars/Tammytcl/FreqCa?style=social" alt="GitHub stars"></a>
 </p>
 
-[News](#-news) · [Method](#-method) · [Results](#-main-results) ·
-[Installation](#-installation) · [FLUX](#-freqca-flux) ·
-[Qwen-Image](#-freqca-qwen-image) · [Evaluation](#-evaluation)
+The [arXiv paper](https://arxiv.org/abs/2510.08669) is an earlier version.
+Please refer to the [latest PDF](FreqCa.pdf) for the NeurIPS 2026 version.
 
 </div>
 
@@ -337,20 +335,23 @@ See [third-party notices](THIRD_PARTY_NOTICES.md) for details.
 If FreqCa is useful in your research, please cite:
 
 ```bibtex
-@inproceedings{liu2026freqca,
-  title     = {FreqCa: Accelerating Image Generation and Editing via Frequency-Aware Caching},
-  author    = {Liu, Jiacheng and Cai, Peiliang and Zhou, Qinming and Lin, Yuqi and
-               Kong, Deyang and Huang, Benhao and Pan, Yupei and Xu, Haowen and
-               Zou, Chang and Tang, Junshu and Zheng, Shikang and Zhang, Linfeng},
-  booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2026}
+@misc{liu2025freqcaacceleratingdiffusionmodels,
+  title         = {FreqCa: Accelerating Diffusion Models via Frequency-Aware Caching},
+  author        = {Jiacheng Liu and Peiliang Cai and Qinming Zhou and Yuqi Lin and
+                   Deyang Kong and Benhao Huang and Yupei Pan and Haowen Xu and
+                   Chang Zou and Junshu Tang and Shikang Zheng and Linfeng Zhang},
+  year          = {2025},
+  eprint        = {2510.08669},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2510.08669}
 }
 ```
 
 ## 📧 Contact
 
-For questions and discussions, please open a GitHub issue or contact
-[Linfeng Zhang](mailto:zhanglinfeng@sjtu.edu.cn).
+For questions and discussions, please open a GitHub issue or email
+[ljc.mytcl@gmail.com](mailto:ljc.mytcl@gmail.com).
 
 ## ⭐ Star History
 
