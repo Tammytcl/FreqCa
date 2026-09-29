@@ -4,16 +4,14 @@
 
 ### Accelerating Image Generation and Editing via Frequency-Aware Caching
 
-Jiacheng Liu<sup>1,2,3,*</sup>, Peiliang Cai<sup>1,*</sup>, Qinming Zhou<sup>1,4</sup>,
+Jiacheng Liu<sup>1,2,3</sup>, Peiliang Cai<sup>1</sup>, Qinming Zhou<sup>1,4</sup>,
 Yuqi Lin<sup>1,5</sup>, Deyang Kong<sup>1,7</sup>, Benhao Huang<sup>1,6</sup>,
 Yupei Pan<sup>1,7</sup>, Haowen Xu<sup>1</sup>, Chang Zou<sup>1,2,7</sup>,
-Junshu Tang<sup>2</sup>, Shikang Zheng<sup>1,8</sup>, Linfeng Zhang<sup>1,†</sup>
+Junshu Tang<sup>2</sup>, Shikang Zheng<sup>1,8</sup>, Linfeng Zhang<sup>1</sup>
 
 <sup>1</sup>EPIC Lab, SJTU &nbsp; <sup>2</sup>Tencent Hunyuan &nbsp;
 <sup>3</sup>SDU &nbsp; <sup>4</sup>THU &nbsp; <sup>5</sup>JLU &nbsp;
 <sup>6</sup>CMU &nbsp; <sup>7</sup>UESTC &nbsp; <sup>8</sup>SCUT
-
-<sup>*</sup>Equal contribution &nbsp; <sup>†</sup>Corresponding author
 
 <p>
   <img src="https://img.shields.io/badge/NeurIPS-2026-4b44ce" alt="NeurIPS 2026">
@@ -23,13 +21,16 @@ Junshu Tang<sup>2</sup>, Shikang Zheng<sup>1,8</sup>, Linfeng Zhang<sup>1,†</s
   <a href="https://github.com/Tammytcl/FreqCa/stargazers"><img src="https://img.shields.io/github/stars/Tammytcl/FreqCa?style=social" alt="GitHub stars"></a>
 </p>
 
-**Training-free · 6–7× FLOPs acceleration · Generation and editing · O(1) cache memory**
-
 [News](#-news) · [Method](#-method) · [Results](#-main-results) ·
 [Installation](#-installation) · [FLUX](#-freqca-flux) ·
 [Qwen-Image](#-freqca-qwen-image) · [Evaluation](#-evaluation)
 
 </div>
+
+<p align="center">
+  <img src="assets/figures/showcase.png" width="92%" alt="Qwen-Image samples generated with FreqCa">
+</p>
+<p align="center"><em>Qwen-Image samples generated with FreqCa at 7.14× FLOPs acceleration.</em></p>
 
 ## 🔥 News
 
@@ -57,23 +58,13 @@ generation and editing without additional training.
 
 ## 💡 Method
 
+<p align="center">
+  <img src="assets/figures/method_overview.png" width="100%" alt="Overview of the FreqCa framework">
+</p>
+<p align="center"><em>Overview of the FreqCa framework.</em></p>
+
 FreqCa applies a different strategy to each frequency band of the Cumulative
 Residual Feature:
-
-```text
-                         Cumulative Residual Feature (CRF)
-                                      │
-                              Frequency split
-                          ┌───────────┴───────────┐
-                          │                       │
-                  Low-frequency CRF      High-frequency CRF
-                  stable structure       continuous details
-                          │                       │
-                     direct reuse         Hermite forecasting
-                          └───────────┬───────────┘
-                                      │
-                              predicted CRF
-```
 
 - **Frequency-aware caching:** reuse stable low-frequency structure and
   forecast evolving high-frequency details.
@@ -85,18 +76,28 @@ Residual Feature:
 
 ## 📊 Main Results
 
-Representative results from the 50-step experiments are shown below. FLUX was
-measured on an NVIDIA A100 and Qwen-Image on an NVIDIA H20.
+The 50-step FLUX experiments were measured on an NVIDIA A100, while the
+Qwen-Image experiments were measured on an NVIDIA H20.
 
-| Model / benchmark | Interval | FLOPs speedup | Latency speedup | Quality |
-|:--|--:|--:|--:|--:|
-| FLUX.1-dev / DrawBench | 6 | 4.99× | 4.48× | ImageReward **1.01** (+2.0%) |
-| FLUX.1-dev / DrawBench | 9 | 6.24× | **5.47×** | ImageReward **0.97** (-2.0%) |
-| Qwen-Image / DrawBench | 6 | 5.00× | 4.28× | ImageReward **1.20** (-4.0%) |
-| Qwen-Image / DrawBench | 9 | **7.14×** | **5.68×** | ImageReward **1.02** (-18.4%) |
-| FLUX.1-Kontext-dev / GEdit-EN | 9 | 6.24× | **5.74×** | Overall **6.190** (-0.4%) |
-| Qwen-Image-Edit / GEdit-CN | 9 | 6.24× | **5.57×** | Overall **7.27** (-1.9%) |
-| Qwen-Image-Edit / GEdit-EN | 9 | 6.24× | **5.57×** | Overall **7.21** (-4.3%) |
+### Image generation
+
+<p align="center">
+  <img src="assets/tables/flux_generation.png" width="100%" alt="Quantitative results on FLUX.1-dev and FLUX.1-schnell">
+</p>
+
+<p align="center">
+  <img src="assets/tables/qwen_image_generation.png" width="100%" alt="Quantitative results on Qwen-Image and Qwen-Image-Lightning">
+</p>
+
+### Image editing
+
+<p align="center">
+  <img src="assets/tables/flux_kontext_editing.png" width="100%" alt="Quantitative results on FLUX.1-Kontext-dev">
+</p>
+
+<p align="center">
+  <img src="assets/tables/qwen_image_editing.png" width="100%" alt="Quantitative results on Qwen-Image-Edit">
+</p>
 
 > [!NOTE]
 > FLOPs speedup and wall-clock speedup are different quantities. Latency varies

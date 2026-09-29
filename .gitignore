@@ -37,3 +37,7 @@ wandb/
 # Authoring artifacts are kept locally but are not part of the public repository.
 *.zip
 *.pdf
+
+# Local source screenshots copied into assets/ with descriptive names
+/image.png
+/image copy*.png
